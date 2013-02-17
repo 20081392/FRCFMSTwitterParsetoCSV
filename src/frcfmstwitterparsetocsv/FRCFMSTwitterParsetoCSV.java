@@ -36,7 +36,7 @@ public class FRCFMSTwitterParsetoCSV
         NodeList descNodes = doc.getElementsByTagName("description");
 
 
-       BufferedWriter writer = null;
+
        String csv = null;
 
         for(int i=0; i<20 /**descNodes.getLength()*/;i++)
@@ -46,12 +46,11 @@ public class FRCFMSTwitterParsetoCSV
             tweet = (descNodes.item(i).getTextContent());
             csvbuffer = tweet.replaceAll("#FRC(\\S+)\\sTY\\s([PQE])\\sMC\\s(\\d+)\\sRF\\s(\\d+)\\sBF\\s(\\d+)\\sRA\\s(\\d+)\\s(\\d+)\\s(\\d+)\\sBA\\s(\\d+)\\s(\\d+)\\s(\\d+)\\sRC\\s(\\d+)\\sBC\\s(\\d+)\\sRFP\\s(\\d+)\\sBFP\\s(\\d+)\\sRAS\\s(\\d+)\\sBAS\\s(\\d+)\\sRTS\\s(\\d+)\\sBTS\\s(\\d+)", "$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19");
             System.out.println("----------------------------------");
-            csv = (csv + writer.newLine() + csvbuffer);
+            csv = (csv + "," + csvbuffer);
             System.out.println(csv);
         }
  
-            
-
+               BufferedWriter writer = null;
 	try
 	{
 		writer = new BufferedWriter( new FileWriter("G:\\frcfms.csv"));
