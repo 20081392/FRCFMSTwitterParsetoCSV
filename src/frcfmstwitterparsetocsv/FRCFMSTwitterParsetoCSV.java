@@ -35,6 +35,8 @@ public class FRCFMSTwitterParsetoCSV
         Document doc = parseXML(connection.getInputStream());
         NodeList descNodes = doc.getElementsByTagName("description");
 
+
+       BufferedWriter writer = null;
        String csv = null;
 
         for(int i=0; i<20 /**descNodes.getLength()*/;i++)
@@ -49,13 +51,11 @@ public class FRCFMSTwitterParsetoCSV
         }
  
             
-            BufferedWriter writer = null;
+
 	try
 	{
 		writer = new BufferedWriter( new FileWriter("G:\\frcfms.csv"));
 		writer.write(csv);
-                                
-
 	}
 	catch ( IOException e)
 	{
